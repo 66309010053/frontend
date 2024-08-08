@@ -30,7 +30,7 @@ export default function Nav() {
                   </ul>
                   <div className="d-flex ms-md-3">
                     <button type="button" className="btn btn-outline-primary me-2">Login</button>
-                    <button type="button" className="btn btn-primary">Sign-up</button>
+                    <Link href="/signup" className="btn btn-primary">Sign-up</Link>
                   </div>
                 </div>
               </nav>
