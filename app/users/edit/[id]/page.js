@@ -4,7 +4,8 @@ import Navbar from '/app/component/nav';
 import Footer from '/app/Footter/footter';
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap-icons/font/bootstrap-icons.css';
-export default function Page() {
+export async function GET(request, { params }) {
+    const { id } = params;
 
   const [firstname, setFirstName] = useState('');
   const [lastname, setLastName] = useState('');
@@ -14,7 +15,7 @@ export default function Page() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('http://localhost:3000/api/users', {
+    const res = await fetch(`http://localhost:3000/api/users/${id}`, {
       method: 'POST',
       headers: {
         Accept : 'application/json',
@@ -34,7 +35,7 @@ export default function Page() {
     <div className="container">
     <div class="card">
   <div class="card-header bg-success text-white">
-    SignUp Form
+    Edit From {id}
   </div>
   <div class="card-body">
 
