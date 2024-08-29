@@ -27,6 +27,22 @@ export default function Page() {
   return () => clearInterval(interval);
 }, []);
 
+const handleDelete = async (id) => {
+  //console.log('user id :', id);
+  try {
+    const res = await fetch(`http://localhost:3000/api/users/${id}`, {
+      method: 'DELETE',
+      headers: {
+        Accept : 'application/json',
+      },
+    });
+    const result = await res.json();
+    console.log(result);
+
+  } catch (error) {
+    console.error('Error fetching data:', error);
+  }
+}; //end handleDelete
 
   return (
     <>
@@ -56,7 +72,7 @@ export default function Page() {
               <td>{item.firstname}</td>
               <td>{item.lastname}</td>
               <td><Link href={`/users/edit/${item.id}`} className="btn btn-warning">Edit</Link></td>
-              <td><Link href={`/users/del/${item.id}`} className="btn btn-danger">Del</Link></td>
+              <td><button className="btn btn-pill btn-danger" type="button" onClick={() => handleDelete(item.id)}><i class="fa fa-trash"></i>Del</button></td>
             </tr>
           ))}
         </tbody>
@@ -67,7 +83,7 @@ export default function Page() {
     </div>
     </div>
     <br /><br />
-     <Footer/>
+      <Footer/>
     </>
   );
 }
