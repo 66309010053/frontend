@@ -24,6 +24,7 @@ export default function Page() {
 
     const result = await res.json();
     console.log(result);
+    
   };
 
   return (
